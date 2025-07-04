@@ -1,0 +1,34 @@
+﻿@model Instractor
+@{
+    ViewData["Title"] = "ViewInstractorDetails";
+}
+
+<style>
+    h4{
+        color:blue;
+    }
+
+    div{
+        font-size:35px;
+    }
+
+   
+</style>
+
+<h1 >ViewInstractorDetails</h1>
+
+<h4> Instractor ID :</h4>
+<div>@Model.Id</div>
+
+<h4> Instractor Name :</h4>
+<div>@Model.Name</div>
+<h4> Instractor Image :</h4>
+<div>
+    <img src="/Images/@Model.Imag" style="width:80px" />
+</div>
+<h4> Instractor Salary :</h4>
+<div>@Model.Salary</div>
+<h4> Instractor Address :</h4>
+<div>@Model.Address</div>
+
+<a href="/Instractor/ViewAllInstractor">Go Back</a>

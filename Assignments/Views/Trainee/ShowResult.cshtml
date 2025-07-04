@@ -1,0 +1,65 @@
+﻿@model TraineeCourseResultViewModel
+@{
+    ViewData["Title"] = "ShowResult";
+}
+<style>
+    .status{
+        color:@Model.Color;
+
+        
+    }
+</style>
+<h1>ShowResult</h1>
+
+<table class="table table-info table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Trainee Data</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Trainee Name :</td>
+            <td>@Model.TraineeName</td>
+           
+        </tr>
+        <tr>
+            <td>Course Name :</td>
+            <td>@Model.CourseName</td>
+          
+        </tr>
+        <tr>
+            <td>Trainee Degree :</td>
+            <td>@Model.TraineeDegree</td>
+            
+        </tr>
+        <tr>
+            <td>Course MinDegree :</td>
+            <td>@Model.MinCourseDegree</td>
+
+        </tr>
+        <tr>
+            <td>Trainee Status :</td>
+            <td class="status">@Model.Status</td>
+
+        </tr>
+    </tbody>
+</table>
+
+@* <h4> Trainee Name :</h4>
+<div>@Model.TraineeName</div>
+
+<h4> Course Name :</h4>
+<div>@Model.CourseName</div>
+
+<h4> Trainee Degree :</h4>
+<div>@Model.TraineeDegree</div>
+
+<h4> Course MinDegree :</h4>
+<div>@Model.MinCourseDegree</div>
+
+<h4> Trainee Status :</h4>
+<div class="status">@Model.Status</div> *@
+

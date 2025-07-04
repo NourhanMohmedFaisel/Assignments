@@ -1,0 +1,84 @@
+﻿@model InstractorDetailsViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<form action="/Instractor/SaveAdd" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" name="Name" class="form-control" id="Name" value="@Model?.Name">
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Address</label>
+        <input type="text" name="Address" class="form-control" id="Address" value="@Model?.Address">
+    </div>
+    <div class="mb-3">
+        <label for="Salary" class="form-label">Salary</label>
+        <input type="number" name="Salary" class="form-control" id="Salary" value="@Model?.Salary">
+    </div>
+    <div class="form-group">
+        <label  class="col-form-label">Image</label>
+        <input asp-for="Imag" class="form-control-file" >
+    </div>
+    <div>
+        <label>DepartmentID</label>
+        
+        <select id="DepartmentID" name="DepartmentID" class="form form-control" onchange="GetCourses()">
+            @foreach (var deptItem in Model.Departments)
+            {
+                if (Model.DepartmentID == deptItem.Id)
+                {
+                    <option value="@deptItem.Id" selected>@deptItem.Name</option>
+                }
+                else
+                {
+                    <option value="@deptItem.Id">@deptItem.Name</option>
+
+                }
+            }
+
+        </select>
+        <label>CourseID</label>
+
+        <select id="CourseID" name="CourseID" class="form form-control">
+            @* @foreach (var crsItem in Model.Courses)
+            {
+                if (Model.CourseID == crsItem.Id)
+                {
+                    <option value="@crsItem.Id" selected>@crsItem.Name</option>
+                }
+                else
+                {
+                    <option value="@crsItem.Id">@crsItem.Name</option>
+
+                }
+            } *@
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100 wy-2">Add</button>
+</form>
+
+<a href="/Instractor/ViewAllInstractor">Back To List</a>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function GetCourses() { 
+        var deptId = document.getElementById("DepartmentID").value;
+        var crsElement = document.getElementById("CourseID");
+        crsElement.innerHTML = "";
+        console.log(deptId);
+        $.ajax({
+            url: "/Instractor/GetCoursesByDepartmentID?deptID=" + deptId
+            , success: function (result) {
+                console.log(result);
+                for (let crs of result) {
+                    crsElement.innerHTML+="<option value="+crs.id+">"+crs.name+"</option>"
+                }
+            }
+        });
+    }
+</script>
+

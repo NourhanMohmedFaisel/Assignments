@@ -1,0 +1,72 @@
+﻿@model CourseDetailsViewModel
+
+@{
+    ViewData["Title"] = "Add";
+    SelectList deptOption = new SelectList(Model.Departments,"Id","Name");
+}
+
+<h1>Add</h1>
+<form asp-action="SaveAdd" asp-controller="Course" method="post">
+   
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Degree" class="form-label"></label>
+        <input asp-for="Degree" class="form-control">
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="MinDegree" class="form-label"></label>
+        <input asp-for="MinDegree" class="form-control">
+        <span asp-validation-for="MinDegree" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Hours" class="form-label"></label>
+        <input asp-for="Hours" class="form-control">
+        <span asp-validation-for="Hours" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="DepartmentID"></label>
+
+        <select asp-for="DepartmentID" asp-items="deptOption"  class="form form-control">
+            <option value="0">--Select Depmartent--</option>
+        </select>
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+      
+
+@* 
+        <label>InstractorID</label>
+
+        <select id="InstractorID" name="InstractorID" class="form form-control">
+            @foreach (var InsItem in Model.Insts)
+            {
+                
+                    <option value="@InsItem.Id" selected>@InsItem.Name</option>
+               
+            }
+
+        </select> *@
+
+       @*  <label>CrsResultID</label>
+
+        <select id="CrsResultID" name="CrsResultID" class="form form-control">
+            @foreach (var CrsResultItem in Model.CrsResults)
+            {
+
+                <option value="@CrsResultItem.Id" selected>@CrsResultItem.Degree</option>
+
+            }
+
+        </select> *@
+    </div>
+    <button type="submit" class="btn btn-primary w-100 wy-2">Add</button>
+</form>
+
+<a href="/Course/Index">Back To List</a>
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
